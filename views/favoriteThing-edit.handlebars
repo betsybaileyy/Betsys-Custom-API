@@ -1,0 +1,20 @@
+<form method="POST" action="/favoriteThing/{{favoriteThing._id}}?_method=PUT">
+    <fieldset>
+        <legend>Edit favoriteThing</legend>
+
+        <p>
+            <label for="favoriteThing-name">Name</label><br>
+            <input id="favoriteThing-name" type="text" name="title" value="{{favoriteThing.name}}"/>
+        </p>
+
+
+        <p>
+            <label for="favoriteThing-description">Description</label><br>
+            <textarea id="favoriteThing-description" name="description" rows="10" />{{favoriteThing.description}}</textarea>
+        </p>
+    </fieldset>
+
+    <p>
+        <button type="submit">Save favoriteThing</button>
+    </p>
+</form>
