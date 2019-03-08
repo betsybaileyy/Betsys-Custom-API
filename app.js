@@ -1,8 +1,14 @@
+require('dotenv').config()
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
+
+app.use(cookieParser());
+
 
 require('./data/betsys-custom-api')
 
@@ -27,6 +33,8 @@ app.use(bodyParser.json())
 app.use(expressValidator())
 
 require('./controllers/favoriteThings.js')(app)
+require('./controllers/auth.js')(app);
+
 
 // require('./controllers/auth.js')(app)
 
