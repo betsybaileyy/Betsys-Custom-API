@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const User = require("../models/user");
+const jwt = require('jsonwebtoken');
+
+//I re-went through the reddit clone for this code, couldn't remember all the steps on my own :(
 
 module.exports = function(app) {
   app.get("/sign-up", (req, res) => {
