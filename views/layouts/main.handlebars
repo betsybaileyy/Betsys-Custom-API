@@ -19,7 +19,9 @@
     <nav class="navbar navbar-light bg-light">
 
       <form action="/login" method="post" class="form-inline">
-
+          {{#if currentUser}}
+          <h1>Take a little time to think about your favorite things</h1>
+          {{else}}
   <div class="form-group mx-sm-3 mb-2">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">👤</span>
@@ -37,13 +39,15 @@
     <input type="password" name="password" class="form-control" id="user-password" placeholder="Password">
   </div>
   <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+  {{/if}}
 </form>
 <ul class="nav navbar-nav navbar-right">
-    <li><a href="/sign-up">Sign Up</a></li>
-
+    {{#if currentUser}}
      <li><a href="/logout">Logout</a></li>
+     {{else}}
+     <li><a href="/sign-up">Sign Up</a></li>
+     {{/if}}
 
-    
    </ul>
     </nav>
 <div class="container">{{{body}}}</div>

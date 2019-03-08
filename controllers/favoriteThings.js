@@ -3,6 +3,8 @@ const FavoriteThing = require('../models/favoriteThing')
 module.exports = (app) => {
     // index of all favorite things
     app.get('/', (req, res) => {
+        var currentUser = req.user;
+
         FavoriteThing.find({})
             .then(favoriteThing => {
                 res.render("index", {
