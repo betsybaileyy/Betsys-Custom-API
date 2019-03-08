@@ -1,16 +1,20 @@
 <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-        <form action="/favoriteThings/new" method="post">
+        <form action="/favoriteThing/new" method="post">
             <legend>New Favorite Thing</legend>
             <div class="form-group">
-                <label for="favoriteThing">Title</label>
-                <input type="text" name="favoriteThing" class="form-control" id="favoriteThing" placeholder="Favorite Thing">
+                <label for="favoriteThing-name">Title</label>
+                <input type="text" name="name" class="form-control" id="favoriteThing-name" placeholder="Favorite Thing">
                 </div>
 
                     <div class="form-group">
                         <label for="favoriteThing-description">Summary</label>
-                        <textarea name="favoriteThing-description" class="form-control" id="favoriteThing-description" placeholder="Favorite Thing Description"></textarea>
+                        <textarea name="description" class="form-control" id="favoriteThing-description" placeholder="Favorite Thing Description"></textarea>
                     </div>
+                    <!-- <div class="form-group">
+                        <label for="favoriteThing-id">ID</label>
+                        <textarea name="favoriteThing-id" class="form-control" id="favoriteThing-id" placeholder="Choose a number"></textarea>
+                    </div> -->
                     <div class='text-right'>
                         <button type="submit" class="btn btn-primary">Share My Favorite Thing</button>
                     </div>

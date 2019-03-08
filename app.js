@@ -4,7 +4,7 @@ var exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
 
-// require('./data/reddit-db')
+require('./data/betsys-custom-api')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -12,7 +12,7 @@ app.set('view engine', 'handlebars')
 /* Mongoose Connection */
 assert = require("assert");
 
-// const url = "mongodb://localhost/reddit-db";
+const url = "mongodb://localhost/betsys-custom-api";
 const mongoose = require("mongoose");
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/betsys-custom-api",
