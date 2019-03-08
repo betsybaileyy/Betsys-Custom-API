@@ -30,7 +30,7 @@ require('./controllers/favoriteThings.js')(app)
 
 // require('./controllers/auth.js')(app)
 
-app.listen(3000, () => {
+app.listen(9000, () => {
     console.log('this thing is on!! port 3000')
 })
 
