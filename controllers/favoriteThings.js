@@ -1,11 +1,7 @@
 const FavoriteThing = require('../models/favoriteThing')
-// const express = require('express')
-// const app = express()
 
 module.exports = (app) => {
-
-// const favoriteThing = new FavoriteThing(req.body)
-
+    // index of all favorite things
     app.get('/', (req, res) => {
         FavoriteThing.find({})
             .then(favoriteThing => {
@@ -17,58 +13,44 @@ module.exports = (app) => {
                 console.log(err.message)
             })
     })
-
-
-
+    //getting form for new fav thing
     app.get('/favoriteThing/new', (req, res) => {
         res.render('favoriteThing-new', {})
     })
-// res.json({ username: })
 
-    // CREATE
+    // create a new fav thing
     app.post('/favoriteThing/new', (req, res) => {
-        // INSTANTIATE INSTANCE OF favoriteThing MODEL
         console.log(req.body)
         const favoriteThing = new FavoriteThing({ ...req.body
         });
 
         // SAVE INSTANCE OF favoriteThing MODEL TO DB
         favoriteThing.save((err, favoriteThing) => {
-            // REDIRECT TO THE ROOT
             return res.redirect(`/favoriteThing/:id`);
         })
     })
-
+    // get fav thing individually
     app.get("/favoriteThing/:id", function(req, res) {
         // LOOK UP THE favoriteThing
         FavoriteThing.findById(req.params.id)
             .then(favoriteThing => {
-                res.render("posts-index", {
-                    posts: posts
+                res.render("favoriteThing-show", {
+                    favoriteThing
                 })
                 .catch(err => {
                 console.log(err.message)
             })
             })
-       //      Profile.findById(req.params.id).then(function (profile) {
-       // res.json(profile)
             .catch(err => {
                 console.log(err.message);
             });
     })
-    // app.get("/n/:subreddit", function(req, res) {
-    //     Post.find({
-    //             subreddit: req.params.subreddit
-    //         })
-    //         .then(posts => {
-    //             res.render("posts-index", {
-    //                 posts
-    //             });
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // });
+
+    app.get('/favoriteThing/:id/edit', (req, res) => {
+        FavoriteThing.findById(req.params.id, function(err, favoriteThing) {
+            res.render('favoriteThing-edit', {favoriteThing: favoriteThing});
+        })
+    })
 
 
 };
