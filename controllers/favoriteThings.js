@@ -28,7 +28,7 @@ module.exports = (app) => {
         if (req.user) {
             var favoriteThing = new FavoriteThing(req.body);
 
-            favoriteThing.save(function(err, favoriteThing) {
+            FavoriteThing.save(function(err, favoriteThing) {
                 return res.redirect(`/`);
             });
         } else {
@@ -60,9 +60,50 @@ module.exports = (app) => {
 
         FavoriteThing.findById(req.params.id, function(err, favoriteThing) {
             res.render('favoriteThing-edit', {
+                // favoriteThing,
+                // currentUser
                 favoriteThing: favoriteThing,
                 currentUser
             });
+        })
+    })
+    // app.get('/reviews/:id/edit', (req, res) => {
+    //     Review.findById(req.params.id, function(err, review) {
+    //         res.render('reviews-edit', {review: review});
+    //     })
+    // })
+
+    app.put('/favoriteThing/:id', (req, res) => {
+        // if (req.user) {
+            FavoriteThing.findByIdAndUpdate(req.params.id, req.body)
+                .then(favoriteThing => {
+                    res.redirect(`/favoriteThing/${favoriteThing._id}`)
+                })
+                .catch(err => {
+                    console.log(err.message)
+                })
+        // } else {
+            return res.status(401); // UNAUTHORIZED
+        // }
+    })
+
+    // if (req.user) {
+    //     var favoriteThing = new FavoriteThing(req.body);
+    //
+    //     favoriteThing.save(function(err, favoriteThing) {
+    //         return res.redirect(`/`);
+    //     });
+    // } else {
+    //     return res.status(401); // UNAUTHORIZED
+    // }
+
+
+    app.delete('/favoriteThing/:id', function(req, res) {
+        console.log("DELETE favoriteThing")
+        FavoriteThing.findByIdAndRemove(req.params.id).then((favoriteThing) => {
+            res.redirect('/');
+        }).catch((err) => {
+            console.log(err.message);
         })
     })
 
