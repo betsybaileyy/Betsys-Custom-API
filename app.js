@@ -40,7 +40,7 @@ app.set('view engine', 'handlebars')
 /* Mongoose Connection */
 assert = require("assert");
 
-const url = "mongodb://localhost/betsys-custom-api";
+// const url = "mongodb://localhost/betsys-custom-api";
 const mongoose = require("mongoose");
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/betsys-custom-api", {
@@ -60,11 +60,13 @@ app.use(expressValidator())
 require('./controllers/favoriteThings.js')(app)
 require('./controllers/auth.js')(app);
 
+const port = process.env.PORT || 3000;
+app.listen(port);
 
 // require('./controllers/auth.js')(app)
 
 app.listen(9000, () => {
-    console.log('this thing is on!! port 3000')
+    console.log('this thing is on!! port 9000')
 })
 
 module.exports = app;
