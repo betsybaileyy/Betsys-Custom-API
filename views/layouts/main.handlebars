@@ -1,55 +1,62 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>BetsysAPI.js</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>BetsysAPI.js</h1>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <nav class="navbar navbar-light bg-light">
 
-      <form action="/login" method="post" class="form-inline">
-          {{#if currentUser}}
-          <h1>Take a little time to think about your favorite things</h1>
-          {{else}}
-  <div class="form-group mx-sm-3 mb-2">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">👤</span>
-      </div>
-    <label for="username" class="sr-only">Username</label>
+        <form action="/login" method="post" class="form-inline">
+            {{#if currentUser}}
+                <h3>Take a little time to think about your favorite things</h3>
+            {{else}}
+                <div class="form-group mx-sm-3 mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">👤</span>
+                    </div>
+                    <label for="username" class="sr-only">Username</label>
 
-    <input type="text" name="username" class="form-control" id="username" placeholder="Username">
-  </div>
-  <div class="form-group mx-sm-3 mb-2">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">🔐</span>
-      </div>
-    <label for="user-password" class="sr-only">Password</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">🔐</span>
+                    </div>
+                    <label for="user-password" class="sr-only">Password</label>
 
-    <input type="password" name="password" class="form-control" id="user-password" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
-  {{/if}}
-</form>
-<ul class="nav navbar-nav navbar-right">
-    {{#if currentUser}}
-     <li><a href="/logout">Logout</a></li>
-     {{else}}
-     <li><a href="/sign-up">Sign Up</a></li>
-     {{/if}}
+                    <input type="password" name="password" class="form-control" id="user-password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+            {{/if}}
+        </form>
+        <div>
+            {{#if currentUser}}
+                <a href="/favoriteThing/new">Make a New Post</a>
+            {{/if}}
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            {{#if currentUser}}
+                <li><a href="/logout">Logout</a></li>
+            {{else}}
+                <li><a href="/sign-up">Sign Up</a></li>
+            {{/if}}
 
-   </ul>
+        </ul>
     </nav>
-<div class="container">{{{body}}}</div>
-  </body>
+    <div class="container">{{{body}}}</div>
+</body>
+
 </html>
