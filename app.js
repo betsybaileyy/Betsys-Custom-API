@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
 const jwt = require('jsonwebtoken');
 const app = express()
+const db = require('./data/betsys-custom-api');
+
 
 var checkAuth = (req, res, next) => {
     console.log("Checking authentication");
@@ -38,7 +40,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 
 /* Mongoose Connection */
-assert = require("assert");
+// assert = require("assert");
 
 // const url = "mongodb://localhost/betsys-custom-api";
 const mongoose = require("mongoose");
@@ -60,13 +62,13 @@ app.use(expressValidator())
 require('./controllers/favoriteThings.js')(app)
 require('./controllers/auth.js')(app);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9000;
 app.listen(port);
 
 // require('./controllers/auth.js')(app)
 
-app.listen(9000, () => {
-    console.log('this thing is on!! port 9000')
-})
+// app.listen(9000, () => {
+//     console.log('this thing is on!! port 9000')
+// })
 
 module.exports = app;
